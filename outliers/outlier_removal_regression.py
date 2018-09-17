@@ -8,9 +8,22 @@ import pickle
 from outlier_cleaner import outlierCleaner
 
 
+
+
+import platform
+if platform.system() == 'Windows':
+    dataset1 = "d:/projects/ud120-projects/outliers/practice_outliers_ages.pkl"
+    dataset2 = "d:/projects/ud120-projects/outliers/practice_outliers_net_worths.pkl"
+if platform.system() == 'Linux':
+    dataset1 = "/home/randall/projects/ud120-projects/outliers/practice_outliers_ages.pkl"
+    dataset2 = "/home/randall/projects/ud120-projects/outliers/practice_outliers_net_worths.pkl"
+if platform.system() == 'Darwin':
+    dataset1 = "/Users/randallpo/projects/ud120-projects/outliers/practice_outliers_ages.pkl"
+    dataset2 = "/Users/randallpo/projects/ud120-projects/outliers/practice_outliers_net_worths.pkl"
+
 ### load up some practice data with outliers in it
-ages = pickle.load( open("practice_outliers_ages.pkl", "r") )
-net_worths = pickle.load( open("practice_outliers_net_worths.pkl", "r") )
+ages = pickle.load( open(dataset1, "r") )
+net_worths = pickle.load( open(dataset2, "r") )
 
 
 
@@ -25,8 +38,13 @@ ages_train, ages_test, net_worths_train, net_worths_test = train_test_split(ages
 
 ### fill in a regression here!  Name the regression object reg so that
 ### the plotting code below works, and you can see what your regression looks like
+from sklearn import linear_model
+reg = linear_model.LinearRegression()
+reg.fit(ages_train, net_worths_train)
+print "what slope does your regression have? (%r)"% reg.coef_
 
-
+test_score = reg.score(ages_test, net_worths_test)
+print "What is that score on the testing data? %r"% test_score
 
 
 
@@ -78,6 +96,9 @@ if len(cleaned_data) > 0:
     plt.ylabel("net worths")
     plt.show()
 
+    print "What is the new slope? %r"% reg.coef_
+    test_score = reg.score(ages_test, net_worths_test)
+    print "What is the new score on the testing data? %r"% test_score
 
 else:
     print "outlierCleaner() is returning an empty list, no refitting to be done"
