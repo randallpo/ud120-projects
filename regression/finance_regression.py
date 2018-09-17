@@ -22,7 +22,7 @@ if platform.system() == 'Linux':
     path = "/home/randall/projects/ud120-projects/tools/"
     dataset = "/home/randall/projects/ud120-projects/final_project/final_project_dataset_modified.pkl"
 if platform.system() == 'Darwin':
-    path = "Users/randallpo/projects/ud120-projects/tools/"
+    path = "/Users/randallpo/projects/ud120-projects/tools/"
     dataset = "/Users/randallpo/projects/ud120-projects/final_project/final_project_dataset_modified.pkl"
 sys.path.append(path)
 

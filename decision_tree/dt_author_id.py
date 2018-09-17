@@ -14,6 +14,8 @@ if platform.system() == 'Windows':
     path = "d:/projects/ud120-projects/tools/"
 if platform.system() == 'Linux':
     path = "/home/randall/projects/ud120-projects/tools/"
+if platform.system() == 'Darwin':
+    path = "/Users/randallpo/projects/ud120-projects/tools/"
 sys.path.append(path)
 from email_preprocess import preprocess
 
