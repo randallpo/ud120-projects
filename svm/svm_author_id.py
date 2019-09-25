@@ -38,7 +38,7 @@ features_train, features_test, labels_train, labels_test = preprocess(word_data,
 #########################################################
 from sklearn import svm
 from sklearn.metrics import accuracy_score
-clf = svm.SVC(C=10000, kernel = 'rbf')
+clf = svm.SVC(C=10000, kernel = 'rbf', gamma='scale')
 t0 = time()
 clf.fit(features_train, labels_train)  
 print "training time:", round(time()-t0, 3), "s"
