@@ -41,7 +41,7 @@ print "training time:", round(time()-t0, 3), "s"
 t0 = time()
 pred = clf.predict(features_test)
 print "predictions time:", round(time()-t0, 3), "s"
-acc = accuracy_score(pred, labels_test)
+acc = accuracy_score(labels_test, pred)
 print "accuracy:", acc
 
 
